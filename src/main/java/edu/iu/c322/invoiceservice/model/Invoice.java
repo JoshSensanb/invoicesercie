@@ -1,19 +1,23 @@
 package edu.iu.c322.invoiceservice.model;
 
 import java.util.ArrayList;
-import edu.iu.c322.orderservice.model.Items;
-import edu.iu.c322.orderservice.model.Payment;
 
+import edu.iu.c322.invoiceservice.model.Payment;
+import jakarta.persistence.*;
 
+@Entity
 public class Invoice {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String orderPlaced;
     private float total;
 
+    @OneToOne
+    private Payment payment;
     private String status;
 
-    private Payment payment;
 
     public String getOrderPlaced() {
         return orderPlaced;
@@ -39,19 +43,19 @@ public class Invoice {
         this.status = status;
     }
 
-    public Payment getPayment() {
-        return payment;
-    }
-
-    public void setPayment(Payment payment) {
-        this.payment = payment;
-    }
-
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
     }
 }

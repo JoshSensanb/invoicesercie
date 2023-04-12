@@ -1,15 +1,22 @@
 package edu.iu.c322.invoiceservice.model;
 
-import edu.iu.c322.orderservice.model.Items;
-import edu.iu.c322.orderservice.model.ShippingAddress;
+import jakarta.persistence.*;
 
-import java.util.ArrayList;
+import java.util.List;
 
+@Entity
 public class InvoiceItem {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private String status;
-    private ArrayList<Items> invoiceItem;
+    @OneToMany
+    private List<Items> invoiceItem;
     private String on;
-    private ShippingAddress address;
+
+
+
 
     public String getStatus() {
         return status;
@@ -19,13 +26,7 @@ public class InvoiceItem {
         this.status = status;
     }
 
-    public ArrayList<Items> getInvoiceItem() {
-        return invoiceItem;
-    }
 
-    public void setInvoiceItem(ArrayList<Items> invoiceItem) {
-        this.invoiceItem = invoiceItem;
-    }
 
     public String getOn() {
         return on;
@@ -35,11 +36,21 @@ public class InvoiceItem {
         this.on = on;
     }
 
-    public ShippingAddress getAddress() {
-        return address;
+    public int getId() {
+        return id;
     }
 
-    public void setAddress(ShippingAddress address) {
-        this.address = address;
+    public void setId(int id) {
+        this.id = id;
     }
+
+    public List<Items> getInvoiceItem() {
+        return invoiceItem;
+    }
+
+    public void setInvoiceItem(List<Items> invoiceItem) {
+        this.invoiceItem = invoiceItem;
+    }
+
+
 }
