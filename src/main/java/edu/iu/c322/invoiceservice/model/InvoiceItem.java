@@ -1,22 +1,15 @@
 package edu.iu.c322.invoiceservice.model;
 
-import jakarta.persistence.*;
-
+import java.util.Date;
 import java.util.List;
 
-@Entity
 public class InvoiceItem {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
     private String status;
-    @OneToMany
-    private List<Items> invoiceItem;
-    private String on;
+    private Date on;
 
+    private Address address;
 
-
+    private List<OrderItem> items;
 
     public String getStatus() {
         return status;
@@ -26,31 +19,27 @@ public class InvoiceItem {
         this.status = status;
     }
 
-
-
-    public String getOn() {
+    public Date getOn() {
         return on;
     }
 
-    public void setOn(String on) {
+    public void setOn(Date on) {
         this.on = on;
     }
 
-    public int getId() {
-        return id;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
-    public List<Items> getInvoiceItem() {
-        return invoiceItem;
+    public List<OrderItem> getItems() {
+        return items;
     }
 
-    public void setInvoiceItem(List<Items> invoiceItem) {
-        this.invoiceItem = invoiceItem;
+    public void setItems(List<OrderItem> items) {
+        this.items = items;
     }
-
-
 }

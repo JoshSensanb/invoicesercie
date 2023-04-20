@@ -14,6 +14,13 @@ public class Payment {
     private String method;
     private int number;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getMethod() {
         return method;
